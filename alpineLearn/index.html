@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+<body>
+    
+    <!-- visible test  -->
+    <!-- <div x-data = "{users: [1,2,4,5,6]}">
+        <div x-show ="users.length > 1">Some Content</div>
+    </div> -->
+    <!-- <div x-data="{
+        message: helloworld
+
+    }">
+        <h2 x-text="message + hello world"></h2>
+    </div> -->
+
+<!-- // toggle example -->
+    <!-- <div x-data= "{show: false}">
+        <button x-on:click="show = !show">Show</button>
+        <div x-show="show">ShowContent</div>
+    </div> -->
+
+
+    <!-- number increment -->
+    <!-- <div x-data= "{number: 1}">
+        <button x-on:click="number < 20 ? number++ : number">increment</button>
+        <div x-text="number"></div>
+        <div x-show="number >= 10">This is a big Number dude</div> 
+       </div> -->
+
+<!-- // x-model example  -->
+<!-- for creating a on change function for text field  -->
+    <!-- <div x-data="{name: ''}">
+    <input type="text" x-model="name">
+    <span x-text="name.length"></span> -->
+
+<!-- 
+    <form x-data="{name: ''}" x-on:submit.prevent="console.log('name') "> 
+        <input type="text" x-model="name">
+        <button type="submit">submit</button>
+    </form> -->
+
+    <!-- two way data binding -->
+    <!-- <div x-data="{
+        name: '',
+        output: '',
+        makeNameUpperCase () {
+            this.output = this.output.toUpperCase()
+
+        }
+    }" > 
+        <input type="text" x-model="output">
+        <span x-text="name"></span>
+        <span x-text="output"></span>
+        <button x-on:click="makeNameUpperCase">Hey
+
+        </button>
+    </div>
+
+
+     -->
+     <!-- imagefinder -->
+     <!-- <form x-data="{
+        query = '',
+        img: '',
+
+        getImage () {
+          this.img = 'https://souce.unsplash.com/1600*900/?${this.query}'
+        }
+     }"
+     x-on:submit.prevent="getImage"
+     >
+
+        <input type="text" x-model="query">
+        <button type="submit">Search</button>
+        <img x-bind:src="img" width="100  ">
+     </form> -->
+
+     <!-- <div x-data="{count: 0}" x-on:submit.prevent="console.log(name)">
+        <button type="submit">Submit</button>
+
+     </div> -->
+<!-- <div x-data="{
+    query: '',
+    img: '',
+    getImage() {
+        this.img = 'https://source.unsplash.com/1600x900/?${this.query}'
+    }
+ }">
+ <form 
+ x-on:submit.prevent="getImage"
+ >  
+    <input type="text">
+    <button type="submit">Search</button>
+    <span x-text="img"></span>
+
+
+ </form>
+ <div x-show="img">
+    <img x-bind:src="img" style="width: 300px">
+
+    </div>
+
+
+</div> -->
+
+    <!-- <div x-data="{agreed: false}">
+        <input type="checkbox" x-model="agreed">
+        <div x-show="agreed">
+            You have agreed
+        </div>
+
+    </div> -->
+
+    <!-- <form 
+      x-data="{
+        users: [],
+         del () {
+            console.log(this.users)
+         }
+        }"
+        x-on:submit.prevent="del"
+        >
+        <input type="checkbox" x-model="users" value="1"> Rafik
+        <input type="checkbox" x-model="users" value="2"> Aayush
+        <input type="checkbox" x-model="users" value="3"> Ali
+        <div x-text="users"></div>
+        <button type="submit">delete</button>
+    </form>  -->
+
+    <!-- <button @click="alert('Hello World!')">Say Hi</button> -->
+
+    <!-- /// seach fuction  -->
+    <!-- <div x-data="{
+        query: '',
+        list: ['rafik', 'aayush', 'subodh'],
+        filterFunc() {
+            return this.list.filter(i => i.startsWith(this.query));
+        }
+    }">
+    <input type="text" x-model="query">
+    <ul>
+        <template x-for="item in filterFunc" :key="item">
+        <li x-text="item"></li>
+        </template>
+    </ul>
+
+    </div> -->
+<!-- 
+    <div x-data>
+        <template x-for="tab in $store.tabs.items">
+            <li x-text="$store.tabs.current"></li>
+            ...
+        </template>
+    </div>
+     
+    <div x-data>
+        <button @click="$store.tabs.current = 'first'" >First Tab</button>
+        <button @click="$store.tabs.current = 'second'">Second Tab</button>
+        <button @click="$store.tabs.current = 'third'">Third Tab</button>
+    </div> -->
+
+    <!-- <div x-data="dropdown">
+        <button @click="toggle">Toggle</button>
+        <div x-show="open">
+            Content...
+
+        </div>
+    </div> -->
+    <div x-data="{ open: false }">
+        <button x-on:click="open = ! open">Toggle Dropdown</button>
+       
+        <div :class="open ? '' : 'hidden'">
+          Dropdown Contents...
+        </div>
+      </div>
+    <!-- <script>
+            
+
+            Alpine.store('tabs', {
+    current: 'first',
+    items: ['first', 'second', 'third'],
+}) 
+-->
+    <!-- <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('dropdown', () => ({
+                open: false, 
+                toggle() {
+                    this.open = !this.open
+                }
+            }))
+
+        })
+    </script> -->
+    <!-- <template>
+        <div x-data="tabs()">
+          <div x-bind:class="{ 'hidden': current == 'first' }">First Tab Content</div>
+          <div x-bind:class="{ 'hidden': current !== 'second' }">Second Tab Content</div>
+          <div x-bind:class="{ 'hidden': current !== 'third' }">Third Tab Content</div>
+          <div>
+              <button x-on:click="current = 'first'">First</button>
+              <button x-on:click="current = 'second'">Second</button>
+              <button x-on:click="current = 'third'">Third</button>
+          </div>
+        </div>
+      </template>
+      <script>
+        function tabs() {
+          return {
+            current: 'first',
+            items: ['first', 'second', 'third'],
+          }
+        }
+      </script> -->
+
+</body>
+</html>
